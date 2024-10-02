@@ -1,0 +1,2 @@
+Los componentes son una pieza de codigo reutilizable que representa una parte de una interfaz de usuario.
+Y se utilizan para representar, administrar y actualizar elementos de una interfaz.
