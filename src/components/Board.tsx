@@ -1,31 +1,34 @@
-import { useState } from "react";
 import "./Board.css";
 import Square from "./Square";
 
-export default function Board() {
-  const [squares, setSquares] = useState(Array(9).fill(null));
-  const [xIsNext, setXIsNext] = useState(true);
-
-  function handleClick(i: number) {
+export default function Board({
+  xIsNext,
+  squares,
+  onPlay,
+}: {
+  xIsNext: boolean;
+  squares: string[];
+  onPlay: (param: string[])=>void
+}) {
+  function handleClick(i: number): VoidFunction | undefined {
     if (squares[i] || calculateWinner(squares)) {
       return;
     }
-    const nextSquares = squares.slice();
+    const newSquaresArr: string[] = squares.slice();
     if (xIsNext) {
-      nextSquares[i] = "X";
+      newSquaresArr[i] = "X";
     } else {
-      nextSquares[i] = "O";
+      newSquaresArr[i] = "O";
     }
-    setSquares(nextSquares);
-    setXIsNext(!xIsNext);
+    onPlay(newSquaresArr);
   }
 
   let status: string;
-  const winner = calculateWinner(squares);
+  const winner: string | null = calculateWinner(squares);
 
-  if(winner){
+  if (winner) {
     status = "Ganador: " + winner;
-  }else{
+  } else {
     status = "Siguiente jugador: " + (xIsNext ? "X" : "O");
   }
 
@@ -51,7 +54,7 @@ export default function Board() {
   );
 }
 
-function calculateWinner(squares: number[]) {
+function calculateWinner(squares: string[]): string | null {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -63,7 +66,7 @@ function calculateWinner(squares: number[]) {
     [2, 4, 6],
   ];
   for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
+    const [a, b, c]: number[] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
       return squares[a];
     }
