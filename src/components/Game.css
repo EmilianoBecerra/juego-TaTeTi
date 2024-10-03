@@ -1,0 +1,29 @@
+.game {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.game .game-board {
+  margin: 100px;
+}
+
+.game .game-info li {
+  list-style-type: none;
+}
+
+.game-info li button {
+  color: black;
+  width: 150px;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 10px;
+  background-color: lightslategrey;
+  border-radius: 4px;
+}
+
+.game-info li button:hover {
+  background-color: rgb(149, 152, 154);
+  cursor: pointer;
+}

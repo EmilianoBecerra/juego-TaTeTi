@@ -1,4 +1,3 @@
-import { MouseEventHandler } from "react";
 import "./Square.css";
 
 export default function Square({
@@ -6,10 +5,13 @@ export default function Square({
   onSquareClick,
 }: {
   value: string;
-  onSquareClick: MouseEventHandler;
+  onSquareClick: ()=>void ;
 }) {
   return (
-    <button className="square" onClick={onSquareClick}>
+    <button
+      className={value === "X" ? "square x" : "square o"}
+      onClick={onSquareClick}
+    >
       {value}
     </button>
   );

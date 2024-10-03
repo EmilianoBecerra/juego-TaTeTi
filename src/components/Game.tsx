@@ -21,8 +21,8 @@ export default function Game() {
   const moves: ReactNode = history.map((square, move) => {
     let description: string;
     if (move > 0) {
-      description = "Ir al movimiento #" + move;
-    }else {
+      description = "Ir al movimiento " + move;
+    } else {
       description = "Ir al inicio del juego";
     }
     return (
@@ -35,10 +35,20 @@ export default function Game() {
   return (
     <div className="game">
       <div className="game-board">
-        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+        <Board
+          xIsNext={xIsNext}
+          squares={currentSquares}
+          movement={currentMove}
+          onPlay={handlePlay}
+        />
       </div>
       <div className="game-info">
         <ol>{moves}</ol>
+        <p className="movement-info">
+          {currentMove !== 9
+            ? `Jugar el movimiento ${currentMove + 1}`
+            : `No hay mas movientos`}
+        </p>
       </div>
     </div>
   );

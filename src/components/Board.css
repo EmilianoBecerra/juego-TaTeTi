@@ -1,20 +1,22 @@
-.grid {
-    background: white;
-    border: 1px solid black;
-    width: fit-content;
-    padding: 20px;
+.grid .status{
+  color: white;
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 4px;
 }
 
-.board-row:after {
-    clear: both;
-    content: '';
-    display: table;
+.grid .status-win{
+  color: green;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 4px;
 }
 
-.status{
-    font-size: 20px;
-    font-weight: bold;
-    color: green;
-    text-align: center;
-    margin-bottom: 10px;
+.board-row{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  margin-top: 10px;
 }
